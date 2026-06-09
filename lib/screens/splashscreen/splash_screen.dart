@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:maze_app/screens/home/home_screen.dart';
+import 'package:maze_app/bottombar/bottom_bar.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void _navigateToHome() {
     Future.delayed(const Duration(seconds: 2), () {
-      Get.offAll(() => const HomeScreen());
+      Get.offAll(() => const BottomBar());
     });
   }
 

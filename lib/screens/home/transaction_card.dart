@@ -55,7 +55,7 @@ class TransactionCard extends StatelessWidget {
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                const SizedBox(height: 2),
+               // const SizedBox(height: 2),
                 Text(
                   date,
                   style: const TextStyle(

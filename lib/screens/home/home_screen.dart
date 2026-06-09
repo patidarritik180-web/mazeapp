@@ -3,6 +3,7 @@ import 'package:fl_chart/fl_chart.dart';
 
 import 'package:get/get.dart';
 import 'package:marquee_widget/marquee_widget.dart';
+import 'package:maze_app/screens/appbar/custom_app_bar.dart';
 import 'package:maze_app/screens/home/transaction_card.dart';
 import 'package:maze_app/screens/home/widgets/crypto_card.dart';
 
@@ -30,30 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 const SizedBox(height: 20),
 
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Image(
-                      image: AssetImage('assets/images/Menu.png'),
-                      width: 26,
-                      height: 26,
-                    ),
-                    Text(
-                      "Home",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w700,
-                        fontFamily: 'SFCompact',
-                      ),
-                    ),
-                    Image(
-                      image: AssetImage('assets/images/Notification.png'),
-                      width: 26,
-                      height: 26,
-                    ),
-                  ],
-                ),
+                const CustomAppBar(title: "Home"),
 
                 const SizedBox(height: 20),
 
