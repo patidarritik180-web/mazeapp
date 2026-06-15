@@ -4,6 +4,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:get/get.dart';
 import 'package:marquee_widget/marquee_widget.dart';
 import 'package:maze_app/screens/appbar/custom_app_bar.dart';
+
 import 'package:maze_app/screens/home/transaction_card.dart';
 import 'package:maze_app/screens/home/widgets/crypto_card.dart';
 

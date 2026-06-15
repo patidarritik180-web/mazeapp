@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
-class TransactionCard extends StatelessWidget {
+class ShoppingCard extends StatelessWidget {
   final String title;
   final String date;
   final String amount;
-  final bool isReceived;
+  final bool isShoppig;
 
-  const TransactionCard({
+  const ShoppingCard({
     super.key,
     required this.title,
     required this.date,
     required this.amount,
-    required this.isReceived,
+    required this.isShoppig,
   });
 
   @override
@@ -25,24 +25,18 @@ class TransactionCard extends StatelessWidget {
       ),
       child: Row(
         children: [
-          // 🔥 ICON (GREEN / RED)
-          Container(
-            height: 40,
-            width: 40,
-            decoration: BoxDecoration(
-              color: Color.fromRGBO(17, 22, 57, 1),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Icon(
-              isReceived ? Icons.arrow_drop_up : Icons.arrow_drop_down,
-              color: isReceived ? Colors.green : Colors.red,
-              size: 40,
+          SizedBox(
+            height: 31,
+            width: 31,
+            child: Image.asset(
+              isShoppig
+                  ? "assets/images/shopping.png"
+                  : "assets/images/receive.png",
             ),
           ),
 
           const SizedBox(width: 12),
 
-          // TEXT PART
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,7 +49,7 @@ class TransactionCard extends StatelessWidget {
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                // const SizedBox(height: 2),
+
                 Text(
                   date,
                   style: const TextStyle(
@@ -69,13 +63,16 @@ class TransactionCard extends StatelessWidget {
             ),
           ),
 
-          // AMOUNT COLOR CHANGE
-          Text(
-            amount,
-            style: TextStyle(
-              color: isReceived ? Colors.green : Colors.red,
-              fontFamily: 'SFCompact',
-              fontWeight: FontWeight.w500,
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              amount,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 12,
+                fontFamily: 'SFCompact',
+                fontWeight: FontWeight.w600,
+              ),
             ),
           ),
         ],
