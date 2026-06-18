@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:maze_app/screens/appbar/custom_app_bar.dart';
 import 'package:maze_app/screens/market/marketwidget/market_depth_chart.dart';
+import 'package:maze_app/screens/market/marketwidget/marketinfo/market_details_screen.dart';
 import 'package:maze_app/screens/market/marketwidget/timeline_chart.dart';
 
 class ExchangeMarket extends StatefulWidget {
@@ -122,32 +123,43 @@ class _ExchangeMarketState extends State<ExchangeMarket> {
 
                               const SizedBox(height: 20),
 
-                              Container(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 12,
-                                  vertical: 8,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: const Color(0xFF1B255D),
-                                  borderRadius: BorderRadius.circular(6),
-                                ),
-                                child: const Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Text(
-                                      "USD/BTC",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 12,
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (_) =>
+                                          const MarketDetailsScreen(),
+                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 12,
+                                    vertical: 8,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xFF1B255D),
+                                    borderRadius: BorderRadius.circular(6),
+                                  ),
+                                  child: const Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Text(
+                                        "USD/BTC",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 12,
+                                        ),
                                       ),
-                                    ),
-                                    SizedBox(width: 4),
-                                    Icon(
-                                      Icons.keyboard_arrow_down,
-                                      color: Colors.white,
-                                      size: 18,
-                                    ),
-                                  ],
+                                      SizedBox(width: 4),
+                                      Icon(
+                                        Icons.keyboard_arrow_down,
+                                        color: Colors.white,
+                                        size: 18,
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ],

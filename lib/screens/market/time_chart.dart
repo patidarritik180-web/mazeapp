@@ -11,7 +11,7 @@ const kMA2 = Colors.white;
 const kGrid = Color(0x14FFFFFF);
 const kLabel = Color(0xFF64748B);
 const kPriceBadge = Color(0xFF22C55E);
-const kVolGreen = const Color(0xFF12DD00);
+const kVolGreen = Color(0xFF12DD00);
 const kVolRed = Color(0xFFDC2626);
 
 // ── Data model ────────────────────────────────────────────────────────────────
@@ -98,7 +98,7 @@ class _TradingChartScreenState extends State<TradingChartScreen> {
         children: [
           // Chart
           SizedBox(
-            height: 300,
+            height: 380,
             child: GestureDetector(
               onPanUpdate: (d) {
                 final box = context.findRenderObject() as RenderBox?;
@@ -371,7 +371,9 @@ class _CandlestickPainter extends CustomPainter {
       }
       if (pts.length < 2) return;
       final path = Path()..moveTo(pts.first.dx, pts.first.dy);
-      for (final p in pts.skip(1)) path.lineTo(p.dx, p.dy);
+      for (final p in pts.skip(1)) {
+        path.lineTo(p.dx, p.dy);
+      }
       final paint = Paint()
         ..color = color
         ..strokeWidth = 1.5
@@ -392,7 +394,7 @@ class _CandlestickPainter extends CustomPainter {
       Offset(padL, lineY),
       Offset(padL + chartW, lineY),
       Paint()
-        ..color = kGreen.withOpacity(0.7)
+        ..color = const Color.fromARGB(255, 136, 166, 147).withOpacity(0.7)
         ..strokeWidth = 1,
     );
     // Price badge

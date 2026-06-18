@@ -1,5 +1,5 @@
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:fl_chart/fl_chart.dart';
 
 class CryptoCard extends StatelessWidget {
   final String name;
@@ -12,6 +12,7 @@ class CryptoCard extends StatelessWidget {
 
   const CryptoCard({
     super.key,
+
     required this.name,
     required this.symbol,
     required this.price,
@@ -23,17 +24,24 @@ class CryptoCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final chartColor = isUp ? const Color(0xFF00FFD1) : Colors.red;
+
     return Container(
-      height: 150,
+      height: 160,
+
       padding: const EdgeInsets.all(12),
+
       decoration: BoxDecoration(
-        color: const Color(0xFF19204A),
-        borderRadius: BorderRadius.circular(12),
+        color: const Color(0xFF131B3D),
+
+        borderRadius: BorderRadius.circular(15),
       ),
+
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+
         children: [
-          /// TOP ROW
+          // top row
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -76,36 +84,50 @@ class CryptoCard extends StatelessWidget {
 
           const SizedBox(height: 10),
 
-          /// MINI CHART
-          SizedBox(
-            height: 60,
-            width: double.infinity,
+          Expanded(
             child: LineChart(
               LineChartData(
+                gridData: const FlGridData(show: false),
+
+                titlesData: const FlTitlesData(show: false),
+
+                borderData: FlBorderData(show: false),
+
                 minX: 0,
 
                 maxX: 6,
+
                 minY: 0,
+
                 maxY: 6,
-                gridData: FlGridData(show: false),
-                titlesData: FlTitlesData(show: false),
-                borderData: FlBorderData(show: false),
+
+                lineTouchData: LineTouchData(enabled: false),
 
                 lineBarsData: [
                   LineChartBarData(
                     spots: spots,
+
                     isCurved: true,
-                    color: isUp ? const Color(0xFF00FFD1) : Colors.redAccent,
-                    barWidth: 2,
-                    dotData: FlDotData(show: false),
+
+                    barWidth: 1,
+
+                    color: chartColor,
+
+                    dotData: const FlDotData(show: false),
+
                     belowBarData: BarAreaData(
                       show: true,
+
                       gradient: LinearGradient(
                         begin: Alignment.topCenter,
+
                         end: Alignment.bottomCenter,
+
                         colors: [
-                          (isUp ? const Color(0xFF00FFD1) : Colors.redAccent)
-                              .withOpacity(0.3),
+                          chartColor.withOpacity(0.7),
+
+                          chartColor.withOpacity(0.3),
+
                           Colors.transparent,
                         ],
                       ),

@@ -10,22 +10,22 @@ class ChartPoint {
 }
 
 const List<ChartPoint> kData = [
-  ChartPoint(15, 820),
-  ChartPoint(18, 760),
-  ChartPoint(21, 680),
-  ChartPoint(24, 590),
-  ChartPoint(27, 510),
+  ChartPoint(15, 700),
+  ChartPoint(18, 730),
+  ChartPoint(21, 750),
+  ChartPoint(24, 690),
+  ChartPoint(27, 720),
   ChartPoint(30, 430),
-  ChartPoint(33, 320),
+  ChartPoint(33, 400),
   ChartPoint(34, 210), // trough / crossover
-  ChartPoint(37, 260),
+  ChartPoint(37, 300),
   ChartPoint(40, 330),
-  ChartPoint(43, 420),
+  ChartPoint(43, 500),
   ChartPoint(46, 530),
   ChartPoint(49, 640),
-  ChartPoint(52, 760),
-  ChartPoint(55, 900),
-  ChartPoint(57, 980),
+  ChartPoint(52, 700),
+  ChartPoint(55, 600),
+  ChartPoint(57, 650),
 ];
 
 const int kCrossoverIdx = 7;
@@ -237,7 +237,9 @@ class _ChartPainter extends CustomPainter {
   void _drawLine(Canvas canvas, List<Offset> pts, Color color) {
     if (pts.length < 2) return;
     final path = Path()..moveTo(pts.first.dx, pts.first.dy);
-    for (final p in pts.skip(1)) path.lineTo(p.dx, p.dy);
+    for (final p in pts.skip(1)) {
+      path.lineTo(p.dx, p.dy);
+    }
 
     // Glow
     canvas.drawPath(
@@ -304,12 +306,12 @@ class _ChartPainter extends CustomPainter {
     double Function(double) my,
   ) {
     void dot(ChartPoint p, Color c) {
-      canvas.drawCircle(Offset(mx(p.x), my(p.y)), 5, Paint()..color = c);
+      canvas.drawCircle(Offset(mx(p.x), my(p.y)), 4, Paint()..color = c);
     }
 
-    dot(kData[0], kTeal);
+    dot(kData[3], kTeal);
     dot(kData[kCrossoverIdx], kTeal);
-    dot(kData[kData.length - 2], kRed);
+    dot(kData[kData.length - 3], kRed);
   }
 
   // ── Axes labels ───────────────────────────────────────────────────────────
@@ -323,7 +325,7 @@ class _ChartPainter extends CustomPainter {
     double yMax,
   ) {
     final style = TextStyle(
-      color: Colors.white.withOpacity(0.25),
+      color: Colors.white,
       fontSize: 11,
       fontFamily: 'Inter',
     );
@@ -389,7 +391,7 @@ class _ChartPainter extends CustomPainter {
       4,
       3,
       Paint()
-        ..color = Colors.white.withOpacity(0.12)
+        ..color = const Color.fromARGB(255, 255, 255, 255).withOpacity(0.12)
         ..strokeWidth = 1
         ..style = PaintingStyle.stroke
         ..strokeCap = StrokeCap.butt,
@@ -499,10 +501,12 @@ class _ChartPainter extends CustomPainter {
       textDirection: TextDirection.ltr,
     )..layout();
     Offset pos = offset;
-    if (align == TextAlign.center)
+    if (align == TextAlign.center) {
       pos = offset.translate(-tp.width / 2, -tp.height / 2);
-    if (align == TextAlign.right)
+    }
+    if (align == TextAlign.right) {
       pos = offset.translate(-tp.width, -tp.height / 2);
+    }
     tp.paint(canvas, pos);
   }
 

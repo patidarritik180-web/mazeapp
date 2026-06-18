@@ -4,6 +4,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:get/get.dart';
 import 'package:marquee_widget/marquee_widget.dart';
 import 'package:maze_app/screens/appbar/custom_app_bar.dart';
+import 'package:maze_app/screens/home/newsscreen/news_screen.dart';
 
 import 'package:maze_app/screens/home/transaction_card.dart';
 import 'package:maze_app/screens/home/widgets/crypto_card.dart';
@@ -30,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
 
                 const CustomAppBar(title: "Home"),
 
@@ -233,7 +234,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
 
-                const SizedBox(height: 20),
+                const SizedBox(height: 15),
 
                 Container(
                   height: 140,
@@ -295,7 +296,43 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 15),
+
+                GestureDetector(
+                  onTap: () {
+                    Get.to(NewsScreen());
+                  },
+                  child: Container(
+                    height: 30,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF082A83),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "News",
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: 'SFCompact',
+                          ),
+                        ),
+
+                        SizedBox(width: 5),
+                        Icon(
+                          Icons.newspaper_outlined,
+                          color: Colors.white,
+                          size: 15,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 15),
 
                 Container(
                   height: 30,

@@ -9,36 +9,32 @@ class BalanceCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // width: 141,
-      //  height: 85,
-      margin: const EdgeInsets.symmetric(horizontal: 6),
+      width: 141,
+      height: 85,
       decoration: BoxDecoration(
         color: const Color(0xFF1A2152),
-        borderRadius: BorderRadius.circular(6),
+        borderRadius: BorderRadius.circular(12),
         border: Border.all(color: const Color(0xFF1546E8), width: 0.5),
       ),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const SizedBox(width: 14),
-
           Container(
-            width: 36,
-            height: 36,
+            width: 44,
+            height: 44,
             decoration: const BoxDecoration(
               color: Color(0xFF243A7A),
               shape: BoxShape.circle,
             ),
-            child: Center(child: Image.asset(icon, width: 18, height: 18)),
+            child: Center(child: Image.asset(icon, width: 24, height: 24)),
           ),
-
-          const SizedBox(width: 12),
-
+          const SizedBox(width: 14),
           Text(
             title,
             style: const TextStyle(
               color: Colors.white,
               fontSize: 14,
-              fontWeight: FontWeight.w600,
+              fontWeight: FontWeight.w500,
               fontFamily: 'SFCompact',
             ),
           ),

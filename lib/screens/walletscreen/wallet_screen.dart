@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:maze_app/screens/appbar/custom_app_bar.dart';
 import 'package:maze_app/screens/walletscreen/balance_card.dart';
 import 'package:maze_app/screens/walletscreen/shopping_card.dart';
@@ -57,7 +56,7 @@ class _WalletScreenState extends State<WalletScreen> {
                         right: -18,
                         child: Transform.rotate(
                           angle: 0.12,
-                          child: Container(
+                          child: SizedBox(
                             height: 196,
                             width: 320,
                             child: Image.asset("assets/images/reflex2.png"),
@@ -71,7 +70,7 @@ class _WalletScreenState extends State<WalletScreen> {
                         right: -13,
                         child: Transform.rotate(
                           angle: 0.08,
-                          child: Container(
+                          child: SizedBox(
                             height: 196,
                             width: 320,
                             child: Image.asset("assets/images/reflex1.png"),
@@ -124,7 +123,7 @@ class _WalletScreenState extends State<WalletScreen> {
 
                             Row(
                               children: [
-                                Container(
+                                SizedBox(
                                   width: 36,
                                   height: 28,
                                   child: Image.asset(
@@ -230,60 +229,45 @@ class _WalletScreenState extends State<WalletScreen> {
 
                 const SizedBox(height: 20),
 
-                SizedBox(
-                  height: 85,
-                  child: PageView(
-                    controller: pageController,
-                    children: [
-                      Center(
-                        child: SizedBox(
-                          width: 141,
-                          height: 85,
-                          child: const BalanceCard(
-                            title: "Balance",
-                            icon: "assets/images/balance.png",
-                          ),
+                Column(
+                  children: [
+                    SizedBox(
+                      height: 85,
+                      child: PageView.builder(
+                        controller: PageController(
+                          viewportFraction:
+                              0.55, // shows ~1.8 cards → peek on both sides
                         ),
+                        itemCount: 3,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 6),
+                            child: BalanceCard(
+                              title: "Balance",
+                              icon: "assets/images/balance.png",
+                            ),
+                          );
+                        },
                       ),
+                    ),
 
-                      Center(
-                        child: SizedBox(
-                          width: 141,
-                          height: 85,
-                          child: const BalanceCard(
-                            title: "Balance",
-                            icon: "assets/images/balance.png",
-                          ),
-                        ),
-                      ),
+                    const SizedBox(height: 18),
 
-                      Center(
-                        child: SizedBox(
-                          width: 141,
-                          height: 85,
-                          child: const BalanceCard(
-                            title: "Balance",
-                            icon: "assets/images/balance.png",
-                          ),
-                        ),
+                    SmoothPageIndicator(
+                      controller: pageController,
+                      count: 3,
+                      effect: const ExpandingDotsEffect(
+                        expansionFactor: 3,
+                        spacing: 6,
+                        radius: 10,
+                        dotWidth: 8,
+                        dotHeight: 8,
+                        activeDotColor: Color(0xFF1546E8),
+                        dotColor: Color(0xFF8FA8F8),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-                const SizedBox(height: 15),
-
-                SmoothPageIndicator(
-                  controller: pageController,
-                  count: 3,
-                  effect: ExpandingDotsEffect(
-                    dotHeight: 6,
-                    dotWidth: 6,
-                    spacing: 6,
-                    activeDotColor: Color(0xFF1546E8),
-                    dotColor: Colors.white30,
-                  ),
-                ),
-
                 const SizedBox(height: 20),
                 Container(
                   height: 30,

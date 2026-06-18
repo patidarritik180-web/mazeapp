@@ -60,7 +60,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                 const SizedBox(height: 20),
 
-                Container(
+                SizedBox(
                   height: 150,
                   width: double.infinity,
                   //  color: const Color(0xFF020622),
@@ -316,13 +316,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                         Switch(
                           value: light,
-                          overlayColor: MaterialStateProperty.all<Color>(
+                          overlayColor: WidgetStateProperty.all<Color>(
                             Colors.white24,
                           ),
-                          trackColor: MaterialStateProperty.all<Color>(
+                          trackColor: WidgetStateProperty.all<Color>(
                             const Color(0xFF3FFF2F),
                           ),
-                          thumbColor: const MaterialStatePropertyAll<Color>(
+                          thumbColor: const WidgetStatePropertyAll<Color>(
                             Colors.white,
                           ),
                           onChanged: (bool value) {
